@@ -89,20 +89,18 @@
         border-radius: 4px;
         transition: border-color var(--transition-time) var(--transition-function);
 
-        .input-wrap:focus-within &,
-        &:hover {
+        .form__input-wrap:focus-within &, &:hover{
             outline: none;
             border-color: var(--accent-color);
             cursor: pointer;
         }
+
+        &:hover +  .form__input-icon {
+            fill: var(--accent-color);
+        }
     }
     &__input-wrap {
         position: relative;
-
-        &:focus-within,
-        &:hover {
-            color: var(--accent-color);
-        }
     }
 
     &__input-icon {
@@ -112,6 +110,10 @@
         transform: translateY(-50%);
         fill: currentColor;
         transition: fill var(--transition-time) var(--transition-function);
+
+        .form__input-wrap:focus-within & {
+            fill: var(--accent-color);
+        }
     }
 
     &__element--comment {
@@ -158,6 +160,14 @@ input[type="textarea"] {
     &::placeholder {
         color: rgba(117, 117, 117, 0.5);
     }
+
+    &:focus-visible {
+        outline: none;
+    }
+
+    &:focus {
+        border-color: var(--accent-color);
+    }
 }
 
 .custom-checkbox {
@@ -177,6 +187,10 @@ input[type="textarea"] {
         transition: fill var(--transition-time) var(--transition-function);
     }
 
+    &:hover &__box {
+        fill: var(--accent-color);
+    }
+
     .form__checkbox:checked+&>.custom-checkbox__box {
         fill: var(--accent-color);
         background-color: var(--accent-color);
@@ -186,4 +200,9 @@ input[type="textarea"] {
     .form__checkbox:checked+&>.custom-checkbox__tick {
         fill: var(--white);
     }
+
+    .form__checkbox:focus + &>.custom-checkbox__box {
+        fill: var(--accent-color);
+    }
+
 }
